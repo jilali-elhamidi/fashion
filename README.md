@@ -31,3 +31,26 @@
 
    ```sql
    CREATE DATABASE fashion_db;
+2. **Configurer `application.properties`** dans `src/main/resources/` :
+
+   ```properties
+   spring.application.name=fashion
+   spring.datasource.url=jdbc:postgresql://localhost:5432/fashion_db
+   spring.datasource.username=postgres
+   spring.datasource.password=ton_mot_de_passe
+
+   spring.jpa.hibernate.ddl-auto=update
+   spring.jpa.show-sql=true
+3.  **Placer le fichier fashion.csv **
+   src/main/resources/fashion.csv
+   Il doit contenir des colonnes comme :
+   productId,gender,category,subcategory,articleType,baseColor,usage,productTitle,image,imageUrl
+   1001,Men,Topwear,Tshirts,Round Neck,Blue,Casual,Cool Blue Tee,1001.jpg,https://example.com/images/1001.jpg
+
+4.🚀 Démarrer l’application
+Depuis l’IDE :
+Lancer la classe FashionApplication.java
+
+Depuis le terminal :
+./mvnw spring-boot:run
+
