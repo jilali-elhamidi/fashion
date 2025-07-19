@@ -11,10 +11,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "produits")
 public class Produit {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    @Id
     @Column(name = "product_id")
     private String productId;
 
