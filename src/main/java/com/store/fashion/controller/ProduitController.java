@@ -1,7 +1,7 @@
 package com.store.fashion.controller;
 
-import com.store.fashion.Entity.Produit;
 import com.store.fashion.Service.ProduitService;
+import com.store.fashion.dto.ProduitDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,7 @@ public class ProduitController {
     }
 
     @GetMapping
-    public List<Produit> getProduits() {
+    public List<ProduitDTO> getProduits() {
         return produitService.getAllProduits();
     }
 }
