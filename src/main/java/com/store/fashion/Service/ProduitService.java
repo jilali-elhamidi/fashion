@@ -7,6 +7,7 @@ import com.store.fashion.mapper.ProduitMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +34,18 @@ public class ProduitService {
         Produit produit = produitMapper.toEntity(produitDTO);
         Produit saved = produitRepository.save(produit);
         return produitMapper.toDTO(saved);
+    }
+    public ProduitDTO getProduitDetailsById(String productId) {
+        Optional<Produit> produitOptional = produitRepository.findById(productId); // Utilisez findById ou une méthode personnalisée si l'ID est dans un autre champ
+        return produitOptional.map(produitMapper::toDTO).orElse(null); // Convertir l'entité en DTO
+    }
+
+    // Méthode pour obtenir plusieurs produits par leurs IDs
+    public List<ProduitDTO> getProduitsByIds(List<String> productIds) {
+        List<Produit> produits = produitRepository.findAllById(productIds); // Méthode de JpaRepository
+        return produits.stream()
+                .map(produitMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     // Tu peux aussi ajouter : getById, update, delete etc. en DTO
